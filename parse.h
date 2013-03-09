@@ -1,9 +1,9 @@
 void split(char *args[10],int *argc,char *command){
 	char current_arg[100];
 	int i=0;
-	while(*command){	
-		while(*command == ' ')
+	while(*command == ' ')
 			command++;
+	while(*command){	
 		if(*command == '|' ||*command == '<'||*command == '>'){
 			current_arg[i]='\0';			
 			args[*argc]=(char *)malloc(strlen(current_arg)+1);
@@ -23,8 +23,11 @@ void split(char *args[10],int *argc,char *command){
 			*argc=*argc+1;			
 			i=0;
 			command++;
+			while(*command == ' ')
+				command++;
 		}
 		else{
+			
 			current_arg[i++]=*command;
 			command++;
 			if(*command == '\0'){
