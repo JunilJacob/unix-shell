@@ -7,16 +7,16 @@
 #include <string.h>
 #include <stdlib.h>
 #include "parse.h"
-#define MAX_LEN 100
-#define MAX_COMMANDS 3
 
-int i;//,*i_p=&i;
+
+int i;
 
 main(){
 	
 	char input[MAX_LEN];
 	char *command[MAX_COMMANDS];
 	int pid,argc;	
+	int *status;
 	while(i<MAX_COMMANDS){
 		command[i++]=NULL;
 	}
@@ -27,7 +27,8 @@ main(){
 		if(strcmp(input,"exit")==0)
 			break;
 		split(command,&argc,input);//generating tokens
-		if (argc == 1) {
+		if(argc==0);
+		else if (argc == 1) {
 			if((pid = fork()) == 0){
 				run_command(command[0]);
 			}
@@ -46,7 +47,7 @@ main(){
 			if((pid = fork()) == 0)
 				pipe_IO(command[0],command[2]);
 		}
-		waitpid(pid,NULL,0);
-		
+		waitpid(pid,status,0);
+			
 	}
 }
