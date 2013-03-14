@@ -1,10 +1,3 @@
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "parse.h"
 void split(char *args[],int *argc,char *command){
 	char current_arg[MAX_LEN];

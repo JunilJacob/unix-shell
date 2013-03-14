@@ -1,16 +1,4 @@
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include "parse.h"
-
-
-int i;
-
 main(){
 	
 	char input[MAX_LEN];
@@ -21,7 +9,7 @@ main(){
 		command[i++]=NULL;
 	}
 	while(1){
-		i=0;argc=0;
+		argc=0;
 		write(1,"myshell$",8);
 		gets(input);
 		if(strcmp(input,"exit")==0)
